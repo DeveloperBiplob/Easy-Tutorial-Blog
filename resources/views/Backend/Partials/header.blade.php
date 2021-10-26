@@ -6,10 +6,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Home</a>
+        <a href="{{ route('admin.dashboard') }}" class="nav-link">Home</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="{{ route('admin.dashboard') }}" class="nav-link">Contact</a>
       </li>
     </ul>
 
@@ -113,10 +113,29 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
-        </a>
+            <button type="submit" class="btn btn-warning btn-xs ml-3 mt-2 d-inline-block" data-toggle="modal" data-target="#exampleModal">Logout</button>
       </li>
     </ul>
   </nav>
   <!-- /.navbar -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+        <div class=" float-left">
+         <h5 class="text-danger">Are you sure to logout?</h5>
+        </div>
+        <div class=" float-right">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancle</button>
+            <form action="{{ route('logout') }}" method="POST" class="d-inline-block mt-1">
+                @csrf
+                <button type="submit" class="btn btn-primary btn-sm">Yes | Logout</button>
+            </form>
+
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
