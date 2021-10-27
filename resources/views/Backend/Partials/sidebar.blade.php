@@ -23,8 +23,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item has-treeview {{ Route::is('admin.dashboard') ? 'menu-open' : '' }}">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link {{ Route::is('admin.dashboard') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -33,9 +33,32 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link active">
+                <a href="./index.html" class="nav-link ">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Profile</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview {{ Route::is('admin.category.index') || Route::is('admin.category.create') || Route::is('admin.category.create') || Route::is('admin.category.edit') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Route::is('admin.category.index') || Route::is('admin.category.create') || Route::is('admin.category.create') ? 'active' : '' }}">
+                <i class="fa fa-codiepie nav-icon" aria-hidden="true"> </i>
+              <p>
+                Category
+                <i class="right fas fa-angle-left nav-icon"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.category.index') }}" class="nav-link {{ Route::is('admin.category.index') ? 'active' : '' }}">
+                    <i class="fa fa-list nav-icon" aria-hidden="true"> </i>
+                  <p>Category List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.category.create') }}" class="nav-link {{ Route::is('admin.category.create') ? 'active' : '' }}">
+                  <i class="fa fa-plus-square nav-icon"></i>
+                  <p>Category Create</p>
                 </a>
               </li>
             </ul>

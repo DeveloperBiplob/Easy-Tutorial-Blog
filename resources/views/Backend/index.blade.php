@@ -2,7 +2,7 @@
 
 @section('master-content')
 <section class="content">
-    <div class="container-fluid">
+    <div class="container-fluid m-3">
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <div class="col-lg-3 col-6">

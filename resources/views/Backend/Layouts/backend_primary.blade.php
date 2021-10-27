@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="{{ asset('Backend') }}/plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="{{ asset('Backend/font-awesome/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->
@@ -26,6 +27,9 @@
   <link rel="stylesheet" href="{{ asset('Backend') }}/plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Bootstrap Datatabel-->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css"/>
+  @stack('css')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 
@@ -41,6 +45,9 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="{{ asset('Backend') }}/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap datatable-->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
 <!-- ChartJS -->
 <script src="{{ asset('Backend') }}/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
@@ -65,5 +72,6 @@
 <script src="{{ asset('Backend') }}/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('Backend') }}/dist/js/demo.js"></script>
+@stack('script')
 </body>
 </html>

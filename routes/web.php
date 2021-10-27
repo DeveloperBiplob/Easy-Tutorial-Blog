@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +21,6 @@ Route::get('/', function () {
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resource('category', CategoryController::class);
 });
 require __DIR__.'/auth.php';
