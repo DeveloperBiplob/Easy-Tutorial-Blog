@@ -109,6 +109,29 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview {{ Route::is('admin.website.index') || Route::is('admin.website.edit') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Route::is('admin.website.index') || Route::is('admin.website.edit') ? 'active' : '' }}">
+                <i class="fa fa fa-globe fa-lg nav-icon" aria-hidden="true"> </i>
+              <p>
+                Website
+                <i class="right fas fa-angle-left nav-icon"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.website.index') }}" class="nav-link {{ Route::is('admin.website.index') ? 'active' : '' }}">
+                    <i class="fa fa-list nav-icon" aria-hidden="true"> </i>
+                  <p>Website Details</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.website.edit', 1) }}" class="nav-link {{ Route::is('admin.website.edit') ? 'active' : '' }}">
+                  <i class="fa fa-plus-square nav-icon"></i>
+                  <p>Website Details Update</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item">
             <a href="pages/widgets.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>

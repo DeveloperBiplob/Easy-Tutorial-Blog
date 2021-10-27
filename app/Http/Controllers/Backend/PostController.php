@@ -21,7 +21,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::with(['category', 'author', 'tags'])->get();
+        $posts = Post::with(['category', 'author', 'tags'])->latest()->get();
         return view('Backend.Pages.Post.index', compact('posts'));
     }
 
