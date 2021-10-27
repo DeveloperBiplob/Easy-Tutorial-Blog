@@ -40,8 +40,31 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item has-treeview {{ Route::is('admin.category.index') || Route::is('admin.category.create') || Route::is('admin.category.create') || Route::is('admin.category.edit') ? 'menu-open' : '' }}">
-            <a href="#" class="nav-link {{ Route::is('admin.category.index') || Route::is('admin.category.create') || Route::is('admin.category.create') ? 'active' : '' }}">
+          <li class="nav-item has-treeview {{ Route::is('admin.tag.index') || Route::is('admin.tag.create') || Route::is('admin.tag.edit') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Route::is('admin.tag.index') || Route::is('admin.tag.create') || Route::is('admin.tag.eidt') ? 'active' : '' }}">
+                <i class="fa fa-codiepie nav-icon" aria-hidden="true"> </i>
+              <p>
+                Tags
+                <i class="right fas fa-angle-left nav-icon"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.tag.index') }}" class="nav-link {{ Route::is('admin.tag.index') ? 'active' : '' }}">
+                    <i class="fa fa-list nav-icon" aria-hidden="true"> </i>
+                  <p>Tags List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.tag.create') }}" class="nav-link {{ Route::is('admin.tag.create') ? 'active' : '' }}">
+                  <i class="fa fa-plus-square nav-icon"></i>
+                  <p>Tag Create</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview {{ Route::is('admin.category.index') || Route::is('admin.category.create') || Route::is('admin.category.edit') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Route::is('admin.category.index') || Route::is('admin.category.create') || Route::is('admin.category.eidt') ? 'active' : '' }}">
                 <i class="fa fa-codiepie nav-icon" aria-hidden="true"> </i>
               <p>
                 Category
@@ -59,6 +82,29 @@
                 <a href="{{ route('admin.category.create') }}" class="nav-link {{ Route::is('admin.category.create') ? 'active' : '' }}">
                   <i class="fa fa-plus-square nav-icon"></i>
                   <p>Category Create</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item has-treeview {{ Route::is('admin.post.index') || Route::is('admin.post.create') || Route::is('admin.post.show') || Route::is('admin.post.edit') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Route::is('admin.post.index') || Route::is('admin.post.create') || Route::is('admin.post.edit') ? 'active' : '' }}">
+                <i class="fa fa-codiepie nav-icon" aria-hidden="true"> </i>
+              <p>
+                Posts
+                <i class="right fas fa-angle-left nav-icon"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.post.index') }}" class="nav-link {{ Route::is('admin.post.index') ? 'active' : '' }}">
+                    <i class="fa fa-list nav-icon" aria-hidden="true"> </i>
+                  <p>Posts List</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.post.create') }}" class="nav-link {{ Route::is('admin.post.create') ? 'active' : '' }}">
+                  <i class="fa fa-plus-square nav-icon"></i>
+                  <p>Post Create</p>
                 </a>
               </li>
             </ul>

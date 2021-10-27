@@ -1,15 +1,15 @@
 @extends('Backend.Layouts.backend_master')
 
-@section('title', 'Admin | Category')
+@section('title', 'Admin | Tags')
 
 @section('master-content')
     <div class="card m-3">
         <div class="card-header">
-            <h3 class="text-info float-left">Manage Category</h3>
-            <a href="{{ route('admin.category.create') }}" class="btn btn-success btn-sm float-right">Cratate New Category</a>
+            <h3 class="text-info float-left">Manage Tag</h3>
+            <a href="{{ route('admin.tag.create') }}" class="btn btn-success btn-sm float-right">Create New Tag</a>
         </div>
         <div class="card-body">
-            <table class="table table-bordered" id="categoryTable">
+            <table class="table table-bordered" id="tagTable">
                 <thead>
                     <tr>
                         <th>Sl</th>
@@ -18,13 +18,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($tags as $tag)
                         <tr>
                             <td>{{ $loop->index + 1 }}</td>
-                            <td>{{ $category->name }}</td>
+                            <td>{{ $tag->name }}</td>
                             <td>
-                                <a href="{{ route('admin.category.edit', $category->slug) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o fa-lg"></i></a>
-                                <button type="button" class="btn btn-danger btn-sm d-inline-block" data-toggle="modal" data-target="#deleteCategory-{{ $category->slug }}"><i class="fa fa-trash-o fa-lg"></i></button>
+                                <a href="{{ route('admin.tag.edit', $tag->slug) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o fa-lg"></i></a>
+                                <button type="button" class="btn btn-danger btn-sm d-inline-block" data-toggle="modal" data-target="#deleteTag-{{ $tag->slug }}"><i class="fa fa-trash-o fa-lg"></i></button>
                             </td>
                         </tr>
                     @endforeach
@@ -35,29 +35,27 @@
 @endsection
 
   <!-- Modal -->
-    @foreach ($categories as $category)
-    <div class="modal fade" id="deleteCategory-{{ $category->slug }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    @foreach ($tags as $tag)
+    <div class="modal fade" id="deleteTag-{{ $tag->slug }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Delete Categoy</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Delete Tag</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-              Are You Sure To Delete This Category!
-              <h6>Category:{{ $category->name }}</h6>
+              Are You Sure To Delete This tag!
+              <h6>tag:{{ $tag->name }}</h6>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancle</button>
-                @if($categories)
-                <form action="{{ route('admin.category.destroy', $category->slug) }}" method="POST">
+                <form action="{{ route('admin.tag.destroy', $tag->slug) }}" method="POST">
                     @csrf
                     @method('DELETE')
                   <button type="submit" class="btn btn-primary">Yes | Delelte</button>
                 </form>
-                @endif
             </div>
           </div>
         </div>
@@ -67,7 +65,7 @@
 @push('script')
     <script>
         $(document).ready( function () {
-            $('#categoryTable').DataTable();
+            $('#tagTable').DataTable();
         } );
     </script>
 @endpush
