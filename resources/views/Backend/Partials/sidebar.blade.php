@@ -1,3 +1,9 @@
+<style>
+    .user-panel img {
+        height: 2.1rem;
+        width: 2.1rem;
+    }
+</style>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{ route('admin.dashboard') }}" class="brand-link">
@@ -11,10 +17,15 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('Backend') }}/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+          @if(auth()->user()->image)
+          <img src="{{ asset(auth()->user()->image) }}" class="img-circle elevation-2" alt="User Image">
+          @else
+          <img src="{{ asset('Backend/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+          @endif
+
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="{{ route('admin.profile.index') }}" class="d-block">{{ auth()->user()->name ?? 'Default Name' }}</a>
         </div>
       </div>
 
@@ -23,8 +34,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview {{ Route::is('admin.dashboard') ? 'menu-open' : '' }}">
-            <a href="{{ route('admin.dashboard') }}" class="nav-link {{ Route::is('admin.dashboard') ? 'active' : '' }}">
+          <li class="nav-item has-treeview {{ Route::is('admin.profile.index') ? 'menu-open' : '' }}">
+            <a href="{{ route('admin.dashboard') }}" class="nav-link {{ Route::is('admin.dashboard') || Route::is('admin.profile.index') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -33,7 +44,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="./index.html" class="nav-link ">
+                <a href="{{ route('admin.profile.index') }}" class="nav-link {{ Route::is('admin.profile.index') ? 'active' : '' }}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Profile</p>
                 </a>
