@@ -1,5 +1,6 @@
 @php
     $website = App\Models\Website::find(1);
+    $latestPost = App\Models\Post::latest()->find(1);
 @endphp
 <style>
     .website-logo {
@@ -24,6 +25,9 @@
     <link rel="stylesheet" href="{{ asset('Frontend') }}/assets/css/fontawesome.css">
     <link rel="stylesheet" href="{{ asset('Frontend') }}/assets/css/templatemo-stand-blog.css">
     <link rel="stylesheet" href="{{ asset('Frontend') }}/assets/css/owl.css">
+    <!-- Toastr Notification-->
+    {{-- <link rel="stylesheet" href="{{ asset('plugins') }}/toaster.css"> --}}
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     @stack('css')
   </head>
   <body>
@@ -55,7 +59,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-              <li class="nav-item active">
+              <li class="nav-item {{ Route::is('frontend.home-page') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('frontend.home-page') }}">Home
                   <span class="sr-only">(current)</span>
                 </a>
@@ -66,8 +70,8 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{ asset('Frontend') }}/blog.html">Blog Entries</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ asset('Frontend') }}/post-details.html">Post Details</a>
+              <li class="nav-item {{ Route::is('frontend.single-post') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('frontend.single-post', $latestPost->slug) }}">Post Details</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ asset('Frontend') }}/contact.html">Contact Us</a>
@@ -115,7 +119,7 @@
     <script src="{{ asset('Frontend') }}/assets/js/isotope.js"></script>
     <script src="{{ asset('Frontend') }}/assets/js/accordions.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.4/axios.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"> </script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"> </script> --}}
 
     <script language = "text/Javascript">
       cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
@@ -126,6 +130,19 @@
           t.style.color='#fff';
           }
       }
+    </script>
+    <!-- Toastr Notification-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"> </script>
+    <script>
+        @if (Session::has('success'))
+        // alert('Comment Added Successfully!');
+        toastr.success("{{ Session::get('success') }}", 'Success!')
+        @elseif(Session::has('warning'))
+        // alert('You are already Commented!');
+            toastr.warning("{{ Session::get('warning') }}", 'Warning!')
+        @elseif(Session::has('error'))
+            toastr.error("{{ Session::get('error') }}", 'Error!')
+        @endif
     </script>
     @stack('script')
 

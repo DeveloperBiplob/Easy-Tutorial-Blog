@@ -1,3 +1,27 @@
+<style>
+    .subscrib-form{
+        background-color: transparent;
+        width: 98%;
+        border: 1px solid #ff9800;
+        height: 42px;
+        border-radius: 20px;
+        padding: 10px;
+        color: #fff;
+    }
+    .subscribe-button {
+        margin-left: -103px;
+        background-color: transparent;
+        width: 100px;
+        border: 1px solid #ff9800;
+        height: 42px;
+        border-radius: 20px;
+        color: #fff;;
+        transition: .4s;
+    }
+    .subscribe-button:hover {
+        background: #ff9800
+    }
+</style>
 <section class="call-to-action">
     <div class="container">
       <div class="row">

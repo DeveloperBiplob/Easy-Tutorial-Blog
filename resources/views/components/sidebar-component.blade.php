@@ -63,12 +63,12 @@
             <div class="content">
               <ul>
                 @foreach ($latestPosts as $post)
-                <li><a href="post-details.html">
-                    <div class="image">
+                <li><a href="{{ route('frontend.single-post', $post->slug) }}">
+                    <div class="image float-sm-left">
                         <img src="{{ asset($post->image) }}" alt="..." class="img-fluid">
                     </div>
-                    <div class="latest-post-sidebar">
-                        <h5 style="margin-top:10px">{{ $post->title }}</h5>
+                    <div class="latest-post-sidebar ml-2">
+                        <h5>{{ $post->title }}</h5>
                         <span>{{ $post->created_at->format("M d, Y") }}</span>
                     </div>
                   </a></li>
@@ -142,8 +142,7 @@
             li = `<li style="list-style:none;text-align:center;background:#ccc" class="p-2 text-danger">No Post Found!!</li>`;
         }else{
             li = posts.map(post => {
-                // return `<li><a href="/post/${post.slug}">${post.name} | ${post.author.name}</a></li>`;
-                return `<li><a href=""><i class="fa fa-search"></i>  ${post.title} | ${post.author.name}</a></li>`;
+                return `<li><a href="/post/${post.slug}">${post.title} | ${post.author.name}</a></li>`;
             });
             li = li.join(" ")
         }

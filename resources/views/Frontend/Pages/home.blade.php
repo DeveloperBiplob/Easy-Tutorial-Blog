@@ -1,27 +1,4 @@
-<style>
-    .subscrib-form{
-        background-color: transparent;
-        width: 98%;
-        border: 1px solid #ff9800;
-        height: 42px;
-        border-radius: 20px;
-        padding: 10px;
-        color: #fff;
-    }
-    .subscribe-button {
-        margin-left: -103px;
-        background-color: transparent;
-        width: 100px;
-        border: 1px solid #ff9800;
-        height: 42px;
-        border-radius: 20px;
-        color: #fff;;
-        transition: .4s;
-    }
-    .subscribe-button:hover {
-        background: #ff9800
-    }
-</style>
+
 @extends('Frontend.Layouts.frontend_primary')
 
 @section('frontend_primary_content')
@@ -37,7 +14,7 @@
                         <div class="meta-category">
                           <span>{{ $post->category->name }}</span>
                         </div>
-                        <a href="post-details.html"><h4>{{ $post->title }}</h4></a>
+                        <a href="{{ route('frontend.single-post', $post->slug) }}"><h4>{{ $post->title }}</h4></a>
                         <ul class="post-info">
                           <li><a href="#">Admin</a></li>
                           <li><a href="#">{{ $post->created_at->format("M d, Y") }}</a></li>
@@ -70,7 +47,7 @@
                               </div>
                               <div class="down-content">
                                 <span>{{ $post->category->name }}</span>
-                                <a href="post-details.html"><h4>{{ $post->title }}</h4></a>
+                                <a href="{{ route('frontend.single-post', $post->slug) }}"><h4>{{ $post->title }}</h4></a>
                                 <ul class="post-info">
                                   <li><a href="#">Admin</a></li>
                                   <li><a href="#">{{ $post->created_at->format("M d, Y") }}</a></li>
