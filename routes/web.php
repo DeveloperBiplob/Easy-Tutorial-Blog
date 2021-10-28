@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\ProfileController;
 use App\Http\Controllers\Backend\TagController;
 use App\Http\Controllers\Backend\WebsiteController;
+use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,9 +20,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'home'])->name('frontend.home-page');
+Route::post('/subscriber', [HomeController::class, 'subscriber'])->name('frontend.subscriber');
+Route::get('/search-post/{query}', [HomeController::class, 'search'])->name('frontend.search-post');
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
