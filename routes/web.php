@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AboutUsController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ContactController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\ProfileController;
@@ -31,6 +32,11 @@ Route::get('/all-post', [FrontendPostController::class, 'showAllPost'])->name('f
 Route::get('/category/{category}/post/', [FrontendPostController::class, 'categoryWisePost'])->name('frontend.category-wise-post');
 Route::get('/tag/{tag}/post/', [FrontendPostController::class, 'tagWisePost'])->name('frontend.tag-wise-post');
 Route::get('/about-us', [FrontendPostController::class, 'aboutUs'])->name('frontend.about-us');
+Route::get('/contact', [FrontendPostController::class, 'contact'])->name('frontend.contact');
+Route::post('/contact', [FrontendPostController::class, 'contactStore'])->name('frontend.contactStore');
+Route::get('/mail', function(){
+    return view('Mail.userMessage');
+});
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -41,5 +47,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(
     Route::resource('/website', WebsiteController::class);
     Route::resource('/profile', ProfileController::class);
     Route::resource('/about-us', AboutUsController::class);
+    Route::resource('/contact', ContactController::class);
 });
 require __DIR__.'/auth.php';

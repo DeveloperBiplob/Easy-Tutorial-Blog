@@ -73,8 +73,8 @@
               <li class="nav-item {{ Route::is('frontend.single-post') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('frontend.single-post', $latestPost->slug) }}">Post Details</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ asset('Frontend') }}/contact.html">Contact Us</a>
+              <li class="nav-item {{ Route::is('frontend.contact') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('frontend.contact') }}">Contact Us</a>
               </li>
             </ul>
           </div>

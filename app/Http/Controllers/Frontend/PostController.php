@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\UserMessageMail;
 use App\Models\AboutUs;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Post;
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PostController extends Controller
 {
@@ -81,5 +84,33 @@ class PostController extends Controller
     {
         $abouts = AboutUs::get();
         return view('Frontend.Pages.about', compact('abouts'));
+    }
+
+    public function contact()
+    {
+        $contacts = Contact::get();
+        return view('Frontend.Pages.contact', compact('contacts'));
+    }
+
+    public function contactStore(Request $request)
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:50', 'min:2'],
+            'email' => ['required', 'email', 'max:50'],
+            'subject' => ['required', 'max:100'],
+            'message' => ['required', 'string', 'min:2', 'max:1000'],
+        ]);
+
+        $message = Contact::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message
+        ]);
+
+        if($message){
+            session()->flash('success', 'Thanks For Your Message');
+        }
+        return back();
     }
 }

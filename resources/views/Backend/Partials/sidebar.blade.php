@@ -143,6 +143,23 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview {{ Route::is('admin.contact.index') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Route::is('admin.contact.index') ? 'active' : '' }}">
+                <i class="fa fa-envelope fa-lg nav-icon" aria-hidden="true"> </i>
+              <p>
+                Contact
+                <i class="right fas fa-angle-left nav-icon"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.contact.index') }}" class="nav-link {{ Route::is('admin.contact.index') ? 'active' : '' }}">
+                    <i class="fa fa-list nav-icon" aria-hidden="true"> </i>
+                  <p>Show Contact</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item has-treeview {{ Route::is('admin.website.index') || Route::is('admin.website.edit') ? 'menu-open' : '' }}">
             <a href="#" class="nav-link {{ Route::is('admin.website.index') || Route::is('admin.website.edit') ? 'active' : '' }}">
                 <i class="fa fa fa-globe fa-lg nav-icon" aria-hidden="true"> </i>
