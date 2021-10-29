@@ -85,7 +85,7 @@
             <div class="content">
               <ul>
                 @foreach ($categories as $category)
-                <li><a href="#">- {{ $category->name }}</a></li>
+                <li><a href="{{ route('frontend.category-wise-post', $category->name) }}">- {{ $category->name }}</a></li>
                 @endforeach
             </div>
           </div>
@@ -98,7 +98,7 @@
             <div class="content">
               <ul>
                 @foreach ($tags as $tag)
-                <li><a href="#">{{ $tag->name }}</a></li>
+                <li><a href="{{ route('frontend.tag-wise-post', $tag->slug) }}">{{ $tag->name }}</a></li>
                 @endforeach
               </ul>
             </div>

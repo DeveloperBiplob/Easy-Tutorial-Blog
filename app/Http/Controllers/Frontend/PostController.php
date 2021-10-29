@@ -46,4 +46,33 @@ class PostController extends Controller
 
         return back();
     }
+
+    public function showAllPost()
+    {
+        $date = [];
+        $data['latestPosts'] = Post::with('category', 'author', 'tags')->latest()->limit(3)->get();
+        $data['categories'] = Category::get();
+        $data['tags'] = Tag::get();
+        $data['posts'] = Post::with('category', 'author', 'tags')->latest()->paginate(6);
+        return view('Frontend.Pages.all_post', $data);
+    }
+
+    public function categoryWisePost(Category $category)
+    {
+        $date = [];
+        $data['latestPosts'] = Post::with('category', 'author', 'tags')->latest()->limit(3)->get();
+        $data['categories'] = Category::get();
+        $data['tags'] = Tag::get();
+        $data['posts'] = $category->posts()->latest()->paginate(6);
+        return view('Frontend.Pages.all_post', $data);
+    }
+    public function tagWisePost(Tag $tag)
+    {
+        $date = [];
+        $data['latestPosts'] = Post::with('category', 'author', 'tags')->latest()->limit(3)->get();
+        $data['categories'] = Category::get();
+        $data['tags'] = Tag::get();
+        $data['posts'] = $tag->posts()->latest()->paginate(6);
+        return view('Frontend.Pages.all_post', $data);
+    }
 }

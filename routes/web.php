@@ -26,6 +26,9 @@ Route::post('/subscriber', [HomeController::class, 'subscriber'])->name('fronten
 Route::get('/search-post/{query}', [HomeController::class, 'search'])->name('frontend.search-post');
 Route::get('post/{post}', [FrontendPostController::class, 'singlePost'])->name('frontend.single-post');
 Route::post('/comment/{post}', [FrontendPostController::class, 'comment'])->name('frontend.comment');
+Route::get('/all-post', [FrontendPostController::class, 'showAllPost'])->name('frontend.all-post');
+Route::get('/category/{category}/post/', [FrontendPostController::class, 'categoryWisePost'])->name('frontend.category-wise-post');
+Route::get('/tag/{tag}/post/', [FrontendPostController::class, 'tagWisePost'])->name('frontend.tag-wise-post');
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
