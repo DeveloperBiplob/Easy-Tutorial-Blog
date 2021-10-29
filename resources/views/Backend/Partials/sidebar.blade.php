@@ -51,6 +51,29 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item has-treeview {{ Route::is('admin.about-us.index') || Route::is('admin.about-us.edit') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ Route::is('admin.about-us.index') || Route::is('admin.about-us.eidt') ? 'active' : '' }}">
+                <i class="fa fa-codiepie nav-icon" aria-hidden="true"> </i>
+              <p>
+                About Us
+                <i class="right fas fa-angle-left nav-icon"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.about-us.index') }}" class="nav-link {{ Route::is('admin.about-us.index') ? 'active' : '' }}">
+                    <i class="fa fa-list nav-icon" aria-hidden="true"> </i>
+                  <p>About</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.about-us.edit', 1) }}" class="nav-link {{ Route::is('admin.about-us.edit') ? 'active' : '' }}">
+                  <i class="fa fa-plus-square nav-icon"></i>
+                  <p>Update Aboute</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           <li class="nav-item has-treeview {{ Route::is('admin.tag.index') || Route::is('admin.tag.create') || Route::is('admin.tag.edit') ? 'menu-open' : '' }}">
             <a href="#" class="nav-link {{ Route::is('admin.tag.index') || Route::is('admin.tag.create') || Route::is('admin.tag.eidt') ? 'active' : '' }}">
                 <i class="fa fa-codiepie nav-icon" aria-hidden="true"> </i>

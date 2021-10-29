@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\AboutUs;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
@@ -74,5 +75,11 @@ class PostController extends Controller
         $data['tags'] = Tag::get();
         $data['posts'] = $tag->posts()->latest()->paginate(6);
         return view('Frontend.Pages.all_post', $data);
+    }
+
+    public function aboutUs()
+    {
+        $abouts = AboutUs::get();
+        return view('Frontend.Pages.about', compact('abouts'));
     }
 }

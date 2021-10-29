@@ -64,8 +64,8 @@
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ asset('Frontend') }}/about.html">About Us</a>
+              <li class="nav-item {{ Route::is('frontend.about-us') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('frontend.about-us') }}">About Us</a>
               </li>
               <li class="nav-item {{ Route::is('frontend.all-post') || Route::is('frontend.category-wise-post') || Route::is('frontend.tag-wise-post') ? 'active' : '' }}">
                 <a class="nav-link" href="{{ route('frontend.all-post') }}">Blog Entries</a>

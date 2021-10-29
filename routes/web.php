@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AboutUsController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\PostController;
@@ -29,6 +30,7 @@ Route::post('/comment/{post}', [FrontendPostController::class, 'comment'])->name
 Route::get('/all-post', [FrontendPostController::class, 'showAllPost'])->name('frontend.all-post');
 Route::get('/category/{category}/post/', [FrontendPostController::class, 'categoryWisePost'])->name('frontend.category-wise-post');
 Route::get('/tag/{tag}/post/', [FrontendPostController::class, 'tagWisePost'])->name('frontend.tag-wise-post');
+Route::get('/about-us', [FrontendPostController::class, 'aboutUs'])->name('frontend.about-us');
 
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -38,5 +40,6 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'verified'])->group(
     Route::get('/status/{post}', [PostController::class, 'changeStatus'])->name('post.status');
     Route::resource('/website', WebsiteController::class);
     Route::resource('/profile', ProfileController::class);
+    Route::resource('/about-us', AboutUsController::class);
 });
 require __DIR__.'/auth.php';
