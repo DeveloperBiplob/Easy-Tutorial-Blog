@@ -74,6 +74,17 @@
                             <button type="submit" class="btn btn-success btn-block">Create New Post</button>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Select Post Tags</label>
+                            @foreach ($tags as $tag)
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" type="checkbox" name="tags[]" value="{{ $tag->id }}" @if (in_array($tag->id,$postTags)) checked @endif id="customCheckbox{{ $loop->index + 1 }}" value="option{{ $loop->index + 1 }}">
+                                <label for="customCheckbox{{ $loop->index + 1 }}" class="custom-control-label">{{ $tag->name }}</label>
+                              </div>
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>

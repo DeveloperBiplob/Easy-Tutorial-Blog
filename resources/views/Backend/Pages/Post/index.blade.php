@@ -36,7 +36,7 @@
                             </td>
                             <td>{{ $post->title }}</td>
                             <td><img width="100px" style="border:2px solid rgb(255, 123, 0)" src="{{ asset($post->image) }}" alt=""></td>
-                            <td><span class="badge badge-primary">{{ 100 }} </span></td>
+                            <td><span class="badge badge-primary">{{ $post->view }} </span></td>
                             <td><span class="badge badge-{{ $post->status == 'Active' ? 'primary' : 'danger' }}">{{ $post->status }} </span></td>
                             <td>
                                 @if($post->status === 'Active')

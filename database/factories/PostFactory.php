@@ -23,19 +23,12 @@ class PostFactory extends Factory
     public function definition()
     {
         return [
-                // 'user_id' => 1,
-                // 'category_id' => rand(1, 5),
-                // 'title' => $this->faker->name(),
-                // 'slug' => $this->faker->name(),
-                // 'image' => 'storage/Post/defalut.png',
-                // 'description' => $this->faker->paragraph()
-
                 'user_id' => 1,
                 'category_id' => rand(1, 5),
-                'title' => Str::random(10),
-                'slug' => Str::random(10),
-                'image' => 'storage/Post/defalut.png',
-                'description' => Str::random(100)
+                'title' => $this->faker->name(),
+                'slug' => $this->faker->name(),
+                'image' => 'storage/Post/default.png',
+                'description' => $this->faker->paragraph()
         ];
     }
 }

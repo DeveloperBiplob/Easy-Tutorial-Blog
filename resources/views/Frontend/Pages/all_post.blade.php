@@ -40,7 +40,8 @@
                             <ul class="post-info">
                               <li><a href="#">Admin</a></li>
                               <li><a href="#">{{ $post->created_at->format("M d, Y") }}</a></li>
-                              <li><a href="#">{{ count($post->comments) }}</a></li>
+                              <li><a href="#">{{ count($post->comments) }} Comments</a></li>
+                              <li><a href="#">{{ $post->view }} View</a></li>
                             </ul>
                             <p>{!! $post->description !!}</p>
                             <div class="post-options">

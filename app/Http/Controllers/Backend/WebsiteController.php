@@ -94,7 +94,7 @@ class WebsiteController extends Controller
                 'twitter' => $request->twitter,
                 'behance' => $request->behance,
                 'footer' => $request->footer,
-                'logo' => File::upload($request->logo, 'Website')
+                'logo' => File::upload($request->file('logo'), 'Website')
             ]);
         }else{
             $website->update([

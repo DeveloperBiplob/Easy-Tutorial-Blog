@@ -52,13 +52,15 @@ class PostController extends Controller
             'image' => ['required', 'mimes:jpg,jpeg,png,gif,svg'],
         ]);
 
+        $file = $request->file('image');
+
         $post = Post::create([
             'user_id' => auth()->user()->id,
             'category_id' => $request->category_id,
             'title' => $request->title,
             'slug' => $request->title,
             'description' => $request->description,
-            'image' => File::upload($request->image, 'Post')
+            'image' => File::upload($file, 'Post')
         ]);
 
         if($post){
@@ -90,7 +92,9 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::get();
-        return view('Backend.Pages.Post.edit', compact(['post', 'categories']));
+        $tags = Tag::get();
+        $postTags = $this->getIDByFunction($post->tags);
+        return view('Backend.Pages.Post.edit', compact(['post', 'categories', 'tags', 'postTags']));
     }
 
     /**
@@ -109,20 +113,21 @@ class PostController extends Controller
             'image' => ['mimes:jpg,jpeg,png,gif,svg'],
         ]);
 
+        $file = $request->file('image');
         $oldImage = $post->image;
         if($request->has('image')){
             File::deleteFile($oldImage);
 
-            $post = $post->update([
+            $post->update([
                 'user_id' => auth()->user()->id,
                 'category_id' => $request->category_id,
                 'title' => $request->title,
                 'slug' => $request->title,
                 'description' => $request->description,
-                'image' => File::upload($request->image, 'Post')
+                'image' => File::upload($file, 'Post')
             ]);
         }else{
-            $post = $post->update([
+            $post->update([
                 'user_id' => auth()->user()->id,
                 'category_id' => $request->category_id,
                 'title' => $request->title,
@@ -130,13 +135,9 @@ class PostController extends Controller
                 'description' => $request->description
             ]);
         }
-
-        if($post){
-            $this->notification('Data Create Successfullly!');
-            return redirect()->route('admin.post.index');
-        }else{
-            return back();
-        }
+        $post->tags()->sync($request->tags);
+        $this->notification('Data Update Successfullly!');
+        return redirect()->route('admin.post.index');
     }
 
     /**
@@ -147,6 +148,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $tags = $this->getIDByFunction($post->tags);
+        File::deleteFile($post->image);
+        $post->tags()->detach($tags);
         $deletePsot = $post->delete();
         if($deletePsot){
             $this->notification('Data Delete Successfully!');
@@ -170,5 +174,15 @@ class PostController extends Controller
             $this->notification('Status Active Successfully!');
             return back();
         }
+    }
+
+    protected function getIDByFunction($items)
+    {
+        $ids = [];
+        foreach ($items as $id) {
+            $ids[] = $id->id;
+        }
+
+        return $ids;
     }
 }

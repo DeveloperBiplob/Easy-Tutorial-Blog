@@ -88,9 +88,9 @@ class ProfileController extends Controller
         $profile->location = $request->location;
         $profile->skill = $request->skill;
         $profile->note = $request->note;
-        if($request->image){
+        if($request->has('image')){
             File::deleteFile($profile->image);
-            $profile->image = File::upload($request->image, 'Profile');
+            $profile->image = File::upload($request->file('image'), 'Profile');
         }
         $profile->save();
         $this->notification('Profile Update Successfully!');

@@ -26,43 +26,15 @@ class DatabaseSeeder extends Seeder
             'email_verified_at' => Carbon::now()
         ]);
 
-        AboutUs::create([
-            'title' => 'About Our Blogs',
-            'description' => Str::random(1000),
-            'image' => 'storage/About-us/default.png'
-        ]);
-
-        Tag::create([
-            'name' => 'PHP',
-            'slug' => 'PHP'
-        ]);
-        Tag::create([
-            'name' => 'Js',
-            'slug' => 'js'
-        ]);
-        Tag::create([
-            'name' => 'Laravel',
-            'slug' => 'laravel'
-        ]);
-
         $this->call([
             WebsiteSeeder::class,
             CategorySeeder::class,
+            AboutSeeder::class,
+            TagSeeder::class,
         ]);
 
-        for($i = 1; $i<=20; $i++){
-            Post::create([
-                'user_id' => 1,
-                'category_id' => rand(1, 5),
-                'title' => Str::random(10),
-                'slug' => Str::random(10),
-                'image' => 'storage/Post/defalut.png',
-                'description' => Str::random(100)
-            ]);
-        }
-
         // \App\Models\User::factory(10)->create();
-        // \App\Models\Post::factory(20)->create();
+        \App\Models\Post::factory(20)->create();
 
     }
 }

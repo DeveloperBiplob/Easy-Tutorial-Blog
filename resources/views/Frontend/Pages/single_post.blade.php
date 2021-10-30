@@ -1,6 +1,6 @@
 <style>
     .blog-posts .comments ul li .author-thumb {
-        width: 100px;
+        width: 50px;
         display: inline-block;
     }
     .blog-posts .comments ul li .right-content {
@@ -30,7 +30,7 @@
       </div>
 
         <!-- Subscriber Module -->
-        <x-subscriber-component/>
+        {{-- <x-subscriber-component/> --}}
 
 
       <section class="blog-posts grid-system">
@@ -50,7 +50,8 @@
                         <ul class="post-info">
                           <li><a href="#">Admin</a></li>
                           <li><a href="#">{{ $post->created_at->format("M d, Y") }}</a></li>
-                          <li><a href="#">10 Comments</a></li>
+                          <li><a href="#">{{ count($post->comments) }} Comments</a></li>
+                          <li><a href="#">{{ $post->view }} View</a></li>
                         </ul>
                         <p>{!! $post->description !!}</p>
                         <div class="post-options">
@@ -85,11 +86,11 @@
                             @foreach ($post->comments as $comment)
                             <li class="comment-li">
                                 <div class="author-thumb">
-                                  <img src="{{ asset('Frontend') }}/assets/images/comment-author-01.jpg" alt="">
+                                  <img width="100%" src="{{ asset('Frontend') }}/assets/images/comment-author-01.png" alt="">
                                 </div>
                                 <div class="right-content">
                                   <h4>{{ $comment->name }}<span>{{ $comment->created_at->format("M d, Y") }}</span></h4>
-                                  <p style="display: block">{!! $comment->comment !!}</p>
+                                  <p style="display: block; text-align: justify">{!! $comment->comment !!}</p>
                                 </div>
                               </li>
                             @endforeach
@@ -121,14 +122,6 @@
                               @error('email')
                                 <span class="text-danger">{{ $message }}</span>
                                @enderror
-                            </div>
-                            <div class="col-md-12 col-sm-12">
-                              <fieldset>
-                                <input name="subject" type="text" id="subject" placeholder="Subject">
-                              </fieldset>
-                              @error('subject')
-                                <span class="text-danger">{{ $message }}</span>
-                            @enderror
                             </div>
                             <div class="col-lg-12">
                               <fieldset>

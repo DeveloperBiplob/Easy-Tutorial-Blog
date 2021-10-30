@@ -18,7 +18,8 @@
                         <ul class="post-info">
                           <li><a href="#">Admin</a></li>
                           <li><a href="#">{{ $post->created_at->format("M d, Y") }}</a></li>
-                          <li><a href="#">12 Comments</a></li>
+                          <li><a href="#">{{ count($post->comments) }} Comments</a></li>
+                          <li><a href="#">{{ $post->view }} View</a></li>
                         </ul>
                       </div>
                     </div>
@@ -51,7 +52,8 @@
                                 <ul class="post-info">
                                   <li><a href="#">Admin</a></li>
                                   <li><a href="#">{{ $post->created_at->format("M d, Y") }}</a></li>
-                                  <li><a href="#">12 Comments</a></li>
+                                  <li><a href="#">{{ count($post->comments) }} Comments</a></li>
+                                  <li><a href="#">{{ $post->view }} View</a></li>
                                 </ul>
                                 <p>{!! $post->description !!}</p>
                                 <div class="post-options">

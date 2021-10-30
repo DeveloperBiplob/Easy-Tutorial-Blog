@@ -1,6 +1,6 @@
 <style>
     .image {
-        width: 110px;
+        width: 70px;
         display: inline-block;
     }
     .latest-post-sidebar {
@@ -34,6 +34,12 @@
         margin: auto;
         margin-top: 30px;
         display: none;
+    }
+    .sidebar .recent-posts ul li h5 {
+        font-size: 14px !important;
+    }
+    .sidebar .recent-posts ul li span {
+        margin-top: 0 !important;
     }
 
 </style>

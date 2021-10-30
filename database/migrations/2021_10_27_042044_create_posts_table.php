@@ -22,7 +22,7 @@ class CreatePostsTable extends Migration
             $table->string('image');
             $table->longText('description');
             $table->enum('status', ['Active', 'Inactive'])->default('Inactive');
-            $table->string('view')->nullable();
+            $table->double('view')->default(0);
             $table->timestamps();
         });
     }
