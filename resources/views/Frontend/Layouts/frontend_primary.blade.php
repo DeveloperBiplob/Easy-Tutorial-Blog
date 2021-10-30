@@ -48,11 +48,11 @@
             @if($website->logo)
             <div class="website-logo">
                 <a href="/">
-                    <img width="100%" height="100%" src="{{ asset($website->logo) }}" alt="">
+                    <img width="100%" height="100%" src="{{ asset($website->logo) ?? '' }}" alt="">
                 </a>
             </div>
               @else
-              <a class="navbar-brand" href="/"><h2>{{ $website->title }}<em>.</em></h2></a>
+              <a class="navbar-brand" href="/"><h2>{{ $website->title ?? '' }}<em>.</em></h2></a>
             @endif
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -91,15 +91,15 @@
         <div class="row">
           <div class="col-lg-12">
             <ul class="social-icons">
-              <li><a href="{{ $website->facebook }}" target="_blank">Facebook</a></li>
-              <li><a href="{{ $website->twitter }}" target="_blank">Twitter</a></li>
-              <li><a href="{{ $website->behance }}" target="_blank">Behance</a></li>
-              <li><a href="{{ $website->linnkdin }}" target="_blank">Linkedin</a></li>
+              <li><a href="{{ $website->facebook ?? '' }}" target="_blank">Facebook</a></li>
+              <li><a href="{{ $website->twitter  ?? ''}}" target="_blank">Twitter</a></li>
+              <li><a href="{{ $website->behance  ?? ''}}" target="_blank">Behance</a></li>
+              <li><a href="{{ $website->linnkdin ?? '' }}" target="_blank">Linkedin</a></li>
             </ul>
           </div>
           <div class="col-lg-12">
             <div class="copyright-text">
-              <p>{{ $website->footer }}
+              <p>{{ $website->footer ?? '' }}
 
                  | Design : <a rel="nofollow" href="/" target="_parent">Developer Biplob</a></p>
             </div>
