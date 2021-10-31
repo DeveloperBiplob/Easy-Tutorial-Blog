@@ -34,10 +34,12 @@ class AboutUsController extends Controller
 
         if($request->file('image')){
             if(file_exists($about_u->image)){
-                $about_u->image = File::deleteFile($about_u->image);
+                // $about_u->image = File::deleteFile($about_u->image);
+                $about_u->image = $this->deleteFile($about_u->image);
             }
 
-            $about_u->image = File::upload($request->file('image'), 'About-us');
+            // $about_u->image = File::upload($request->file('image'), 'About-us');
+            $about_u->image = $this->upload($request->file('image'), 'About-us');
         }
 
         $about_u->save();

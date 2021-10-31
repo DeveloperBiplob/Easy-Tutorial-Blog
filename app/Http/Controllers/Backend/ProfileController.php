@@ -91,9 +91,11 @@ class ProfileController extends Controller
 
         if($request->file('image')){
             if(file_exists($profile->image)){
-                File::deleteFile($profile->image);
+                // File::deleteFile($profile->image);
+                $this->deleteFile($profile->image);
             }
-            $profile->image = File::upload($request->file('image'), 'Profile');
+            // $profile->image = File::upload($request->file('image'), 'Profile');
+            $profile->image = $this->upload($request->file('image'), 'Profile');
         }
         $profile->save();
         $this->notification('Profile Update Successfully!');

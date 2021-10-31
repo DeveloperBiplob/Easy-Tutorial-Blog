@@ -84,7 +84,8 @@ class WebsiteController extends Controller
 
         if($request->file('logo')){
             if(file_exists($website->logo)){
-                File::deleteFile($website->logo);
+                // File::deleteFile($website->logo);
+                $this->deleteFile($website->logo);
             }
 
             $website->update([
@@ -96,7 +97,8 @@ class WebsiteController extends Controller
                 'twitter' => $request->twitter,
                 'behance' => $request->behance,
                 'footer' => $request->footer,
-                'logo' => File::upload($request->file('logo'), 'Website')
+                // 'logo' => File::upload($request->file('logo'), 'Website'),
+                'logo' => $this->upload($request->file('logo'), 'Website')
             ]);
         }else{
             $website->update([

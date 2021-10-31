@@ -60,7 +60,8 @@ class PostController extends Controller
             'title' => $request->title,
             'slug' => $request->title,
             'description' => $request->description,
-            'image' => File::upload($file, 'Post')
+            // 'image' => File::upload($file, 'Post'),
+            'image' => $this->upload($file, 'Post'),
         ]);
 
         if($post){
@@ -118,7 +119,8 @@ class PostController extends Controller
 
         if($request->file('image')){
             if(file_exists($oldImage)){
-                File::deleteFile($oldImage);
+                // File::deleteFile($oldImage);
+                $this->deleteFile($oldImage);
             }
 
             $post->update([
@@ -127,7 +129,8 @@ class PostController extends Controller
                 'title' => $request->title,
                 'slug' => $request->title,
                 'description' => $request->description,
-                'image' => File::upload($file, 'Post')
+                // 'image' => File::upload($file, 'Post'),
+                'image' => $this->upload($file, 'Post'),
             ]);
         }else{
             $post->update([
@@ -152,7 +155,8 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $tags = $this->getIDByFunction($post->tags);
-        File::deleteFile($post->image);
+        // File::deleteFile($post->image);
+        $this->deleteFile($post->image);
         $post->tags()->detach($tags);
         $deletePsot = $post->delete();
         if($deletePsot){
