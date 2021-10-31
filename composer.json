@@ -33,7 +33,7 @@
             "Tests\\": "tests/"
         },
         "files": [
-            "app/Actions/file.php"
+            "app/Actions/File.php"
         ]
     },
     "scripts": {
