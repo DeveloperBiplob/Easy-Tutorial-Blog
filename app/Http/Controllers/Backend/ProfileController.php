@@ -88,8 +88,11 @@ class ProfileController extends Controller
         $profile->location = $request->location;
         $profile->skill = $request->skill;
         $profile->note = $request->note;
-        if($request->has('image')){
-            File::deleteFile($profile->image);
+
+        if($request->file('image')){
+            if(file_exists($profile->image)){
+                File::deleteFile($profile->image);
+            }
             $profile->image = File::upload($request->file('image'), 'Profile');
         }
         $profile->save();

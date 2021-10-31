@@ -31,8 +31,12 @@ class AboutUsController extends Controller
 
         $about_u-> title = $request->title;
         $about_u-> description = $request->description;
-        if($request->has('image')){
-            $about_u->image = File::deleteFile($about_u->image);
+
+        if($request->file('image')){
+            if(file_exists($about_u->image)){
+                $about_u->image = File::deleteFile($about_u->image);
+            }
+
             $about_u->image = File::upload($request->file('image'), 'About-us');
         }
 

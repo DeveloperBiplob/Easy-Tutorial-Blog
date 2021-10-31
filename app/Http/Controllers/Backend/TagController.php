@@ -26,7 +26,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        return view('Backend.pages.tags.create');
+        return view('Backend.Pages.Tags.create');
     }
 
     /**

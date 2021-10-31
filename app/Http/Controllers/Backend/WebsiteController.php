@@ -82,8 +82,10 @@ class WebsiteController extends Controller
             'footer' => ['required', 'max:100'],
         ]);
 
-        if($request->has('logo')){
-            File::deleteFile($website->logo);
+        if($request->file('logo')){
+            if(file_exists($website->logo)){
+                File::deleteFile($website->logo);
+            }
 
             $website->update([
                 'title' => $request->title,

@@ -115,8 +115,11 @@ class PostController extends Controller
 
         $file = $request->file('image');
         $oldImage = $post->image;
-        if($request->has('image')){
-            File::deleteFile($oldImage);
+
+        if($request->file('image')){
+            if(file_exists($oldImage)){
+                File::deleteFile($oldImage);
+            }
 
             $post->update([
                 'user_id' => auth()->user()->id,

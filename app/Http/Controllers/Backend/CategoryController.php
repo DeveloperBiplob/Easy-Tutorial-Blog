@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::get();
-        return view('Backend.pages.category.index', compact('categories'));
+        return view('Backend.Pages.Category.index', compact('categories'));
     }
 
     /**
@@ -70,7 +70,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('Backend.pages.category.edit', compact('category'));
+        return view('Backend.Pages.Category.edit', compact('category'));
     }
 
     /**
